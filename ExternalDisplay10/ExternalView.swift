@@ -20,10 +20,18 @@ struct ExternalView: View {
     // MARK: - body
     var body: some View {
         GeometryReader { proxy in
-            Rectangle()
-                .frame(width: 100, height: 100)
-                .cornerRadius(50)
-                .ignoresSafeArea()
+//            if externalDisplayContent.isRectangle {
+//                Rectangle()
+//                    .frame(width: 100, height: 100)
+//                    .cornerRadius(50)
+//                    .ignoresSafeArea()
+//                    .onAppear {
+//                        sleep(4)
+//                        self.externalDisplayContent.isRectangle.toggle()
+//                    }
+//            } else {
+//                Text("ない")
+//            }
         }
     } // body
 } // view

@@ -12,13 +12,14 @@ import SwiftUI
 
 // 端末のview
 struct AddRectangleView: View {
-    
+    @EnvironmentObject var externalDisplayContent: ExternalDisplayContent
     // MARK: - body
     var body: some View {
         VStack {
             Spacer()
             Button {
-                
+                externalDisplayContent.isRectangle.toggle()
+                externalDisplayContent.rectangleCount += 1
             } label: {
                 Text("図形を追加")
             }
