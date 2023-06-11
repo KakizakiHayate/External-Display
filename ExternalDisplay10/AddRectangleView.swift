@@ -23,11 +23,11 @@ struct AddRectangleView: View {
                 if !( externalDisplayContent.screenHeight < externalDisplayContent.shapeTotalHeight) {
                     shape = "circle"
                     externalDisplayContent.shapes.append(shape)
-                    externalDisplayContent.shapeTotalWidth += 100.0
+                    externalDisplayContent.shapeTotalWidth += AppConst.NumericalValue.width
                     if externalDisplayContent.tapCount == 0 {
-                        externalDisplayContent.x = 0
+                        externalDisplayContent.x = AppConst.NumericalValue.resetValue
                     } else {
-                        externalDisplayContent.x += 100
+                        externalDisplayContent.x += AppConst.NumericalValue.width
                     }
                     externalDisplayContent.offsetShapes()
                     externalDisplayContent.tapCount += 1

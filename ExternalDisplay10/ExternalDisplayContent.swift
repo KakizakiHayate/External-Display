@@ -30,23 +30,17 @@ extension ExternalDisplayContent {
             print(screenWidth)
             print(shapeTotalWidth)
             
-            shapeTotalWidth = 100
-            shapeTotalHeight += 100
+            shapeTotalWidth = AppConst.NumericalValue.width
+            shapeTotalHeight += AppConst.NumericalValue.height
             if shapeTotalHeight > screenHeight {
-                x = 0
-                y = 0
-                shapeTotalHeight = 0
-                tapCount = 0
+                x = AppConst.NumericalValue.resetValue
+                y = AppConst.NumericalValue.resetValue
+                shapeTotalHeight = AppConst.NumericalValue.resetValue
+                tapCount = AppConst.NumericalValue.resetTapCount
             } else {
-                x = 0
-                y += 100
+                x = AppConst.NumericalValue.resetValue
+                y += AppConst.NumericalValue.height
             }
-        }
-    }
-    
-    func offsetShapesGreatestValue() {
-        if screenWidth < shapeTotalWidth && screenHeight < shapeTotalHeight {
-            
         }
     }
 }

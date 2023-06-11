@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		759C879D2A35A5450051A348 /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C879C2A35A5450051A348 /* AppConst.swift */; };
 		7F569F3A2A3065E9002EFFD2 /* ExternalDisplayContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F569F392A3065E9002EFFD2 /* ExternalDisplayContent.swift */; };
 		7F855B102A1DE4E700CC8779 /* ExternalDisplay10App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F855B0F2A1DE4E700CC8779 /* ExternalDisplay10App.swift */; };
 		7F855B122A1DE4E700CC8779 /* AddRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F855B112A1DE4E700CC8779 /* AddRectangleView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		759C879C2A35A5450051A348 /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
 		7F569F392A3065E9002EFFD2 /* ExternalDisplayContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplayContent.swift; sourceTree = "<group>"; };
 		7F855B0C2A1DE4E700CC8779 /* ExternalDisplay10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExternalDisplay10.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F855B0F2A1DE4E700CC8779 /* ExternalDisplay10App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDisplay10App.swift; sourceTree = "<group>"; };
@@ -36,11 +38,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		759C877D2A335C850051A348 /* Extension */ = {
+		759C877D2A335C850051A348 /* Const */ = {
 			isa = PBXGroup;
 			children = (
+				759C879C2A35A5450051A348 /* AppConst.swift */,
 			);
-			path = Extension;
+			path = Const;
 			sourceTree = "<group>";
 		};
 		7F855B032A1DE4E700CC8779 = {
@@ -62,7 +65,7 @@
 		7F855B0E2A1DE4E700CC8779 /* ExternalDisplay10 */ = {
 			isa = PBXGroup;
 			children = (
-				759C877D2A335C850051A348 /* Extension */,
+				759C877D2A335C850051A348 /* Const */,
 				7F855B0F2A1DE4E700CC8779 /* ExternalDisplay10App.swift */,
 				7F855B112A1DE4E700CC8779 /* AddRectangleView.swift */,
 				7F855B1D2A1DE53C00CC8779 /* ExternalView.swift */,
@@ -155,6 +158,7 @@
 				7F855B1E2A1DE53C00CC8779 /* ExternalView.swift in Sources */,
 				7F855B102A1DE4E700CC8779 /* ExternalDisplay10App.swift in Sources */,
 				7F569F3A2A3065E9002EFFD2 /* ExternalDisplayContent.swift in Sources */,
+				759C879D2A35A5450051A348 /* AppConst.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

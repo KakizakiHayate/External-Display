@@ -24,7 +24,7 @@ struct ExternalView: View {
                     if proxy.size.width > externalDisplayContent.shapeTotalWidth {
                         if shape == "circle" {
                             Circle()
-                                .frame(width: 100, height: 100)
+                                .frame(width: AppConst.NumericalValue.width, height: AppConst.NumericalValue.height)
                                 .offset(x: externalDisplayContent.x, y: externalDisplayContent.y)
                         } else if shape == "rectangle" {
                             Rectangle()
