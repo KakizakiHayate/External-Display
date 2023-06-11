@@ -20,18 +20,23 @@ struct ExternalView: View {
     // MARK: - body
     var body: some View {
         GeometryReader { proxy in
-//            if externalDisplayContent.isRectangle {
-//                Rectangle()
-//                    .frame(width: 100, height: 100)
-//                    .cornerRadius(50)
-//                    .ignoresSafeArea()
-//                    .onAppear {
-//                        sleep(4)
-//                        self.externalDisplayContent.isRectangle.toggle()
-//                    }
-//            } else {
-//                Text("ない")
-//            }
+                ForEach(externalDisplayContent.shapes, id: \.self) { shape in
+                    if proxy.size.width > externalDisplayContent.shapeTotalWidth {
+                        if shape == "circle" {
+                            Circle()
+                                .frame(width: 100, height: 100)
+                                .offset(x: externalDisplayContent.x, y: externalDisplayContent.y)
+                        } else if shape == "rectangle" {
+                            Rectangle()
+                                .frame(width: 100, height: 100)
+                        }
+                    }
+                }
+                .onAppear {
+                    print("画面サイズ格納\(proxy.size.width)")
+                    externalDisplayContent.screenWidth = proxy.size.width
+                    externalDisplayContent.screenHeight = proxy.size.height
+                }
         }
     } // body
 } // view

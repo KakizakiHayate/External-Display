@@ -36,6 +36,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		759C877D2A335C850051A348 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		7F855B032A1DE4E700CC8779 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +62,7 @@
 		7F855B0E2A1DE4E700CC8779 /* ExternalDisplay10 */ = {
 			isa = PBXGroup;
 			children = (
+				759C877D2A335C850051A348 /* Extension */,
 				7F855B0F2A1DE4E700CC8779 /* ExternalDisplay10App.swift */,
 				7F855B112A1DE4E700CC8779 /* AddRectangleView.swift */,
 				7F855B1D2A1DE53C00CC8779 /* ExternalView.swift */,

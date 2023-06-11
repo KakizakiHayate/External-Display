@@ -12,16 +12,35 @@ import SwiftUI
 
 // 端末のview
 struct AddRectangleView: View {
+    // MARK: - Property Wrappers
+    @State private var shape: String? = nil
     @EnvironmentObject var externalDisplayContent: ExternalDisplayContent
     // MARK: - body
     var body: some View {
         VStack {
             Spacer()
             Button {
-                externalDisplayContent.isRectangle.toggle()
-                externalDisplayContent.rectangleCount += 1
+                if !( externalDisplayContent.screenHeight < externalDisplayContent.shapeTotalHeight) {
+                    shape = "circle"
+                    externalDisplayContent.shapes.append(shape)
+                    externalDisplayContent.shapeTotalWidth += 100.0
+                    if externalDisplayContent.tapCount == 0 {
+                        externalDisplayContent.x = 0
+                    } else {
+                        externalDisplayContent.x += 100
+                    }
+                    externalDisplayContent.offsetShapes()
+                    externalDisplayContent.tapCount += 1
+                }
             } label: {
-                Text("図形を追加")
+                Text("circleを追加")
+            }
+            
+            Button {
+                shape = "rectangle"
+                externalDisplayContent.shapes.append(shape)
+            } label: {
+                Text("rectangleを追加")
             }
             Spacer()
         }
