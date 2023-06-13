@@ -26,10 +26,6 @@ extension ExternalDisplayContent {
     ///折り返すときに呼ばれる
     func offsetShapes() {
         if tapCount != 0 && screenWidth < shapeTotalWidth {
-            print("true")
-            print(screenWidth)
-            print(shapeTotalWidth)
-            
             shapeTotalWidth = AppConst.NumericalValue.width
             shapeTotalHeight += AppConst.NumericalValue.height
             if shapeTotalHeight > screenHeight {
