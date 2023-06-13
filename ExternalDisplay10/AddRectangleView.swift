@@ -10,39 +10,126 @@ import SwiftUI
 // ディスプレイの画面を取得してスマホ側で追加ボタンを押したらRectangleがディスプレイの左上から追加される。ボタンを押すたびにRectangleは追加されていき画面幅に収まりきらなくなるので画面幅に応じて改行されてまた追加されていく。
 // 時間があればRectangleの種類を変更できるのとログイン機能を追加したい。ログイン機能に関しては、ログインしていないときは、ディスプレイ側では、「ログインしてください」と表示されるようにする
 
-// 端末のview
-struct AddRectangleView: View {
+/// 端末のview
+struct AddShapesView: View {
     // MARK: - Property Wrappers
     @State private var shape: String? = nil
+    @State private var isSelectRectangle = false
+    @State private var isSelectCircle = false
+    @State private var isChangeLock = false
+    @State private var isRectangleAlert = false
+    @State private var isCircleAlert = false
+    @State private var isChangeLockAlert = false
     @EnvironmentObject var externalDisplayContent: ExternalDisplayContent
     // MARK: - body
     var body: some View {
-        VStack {
-            Spacer()
-            Button {
-                if !( externalDisplayContent.screenHeight < externalDisplayContent.shapeTotalHeight) {
-                    shape = "circle"
-                    externalDisplayContent.shapes.append(shape)
-                    externalDisplayContent.shapeTotalWidth += AppConst.NumericalValue.width
-                    if externalDisplayContent.tapCount == 0 {
-                        externalDisplayContent.x = AppConst.NumericalValue.resetValue
-                    } else {
-                        externalDisplayContent.x += AppConst.NumericalValue.width
+        ZStack {
+            Color.customColorGray
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                VStack {
+                    Text(AppConst.Text.selectShapes)
+                        .foregroundColor(.white)
+                        .bold()
+                    HStack {
+                        // Rectangleボタン
+                        Button {
+                            if !isChangeLock {
+                                shape = "rectangle"
+                                isRectangleAlert.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "square.fill")
+                                .foregroundColor(.customColorGreen)
+                                .font(.system(size: 70))
+                        }
+                        .padding()
+                        .alert("確認", isPresented: $isRectangleAlert) {
+                            Button {} label: {Text("キャンセル")}
+                            Button {
+                                isChangeLock = true
+                                if isChangeLock {
+                                    isSelectRectangle = true
+                                    isSelectCircle = false
+//                                    isChangeLock = false
+                                } else {
+                                    isChangeLockAlert.toggle()
+                                }
+                            } label: {
+                                Text("選択する")
+                            }
+                        } message: {
+                            Text("この図形を選択しますか？\n変更できなくなります")
+                        }
+                        .alert("注意", isPresented: $isChangeLockAlert) {
+                            Button {} label: {Text("OK")}
+                        } message: {
+                            Text("図形を変更できません")
+                        }
+                        .background(isSelectRectangle ? Color.customColorYellow.opacity(0.6) : Color.customColorGray)
+                        // Circleボタン
+                        Button {
+                            if !isChangeLock {
+                                shape = "circle"
+                                isCircleAlert.toggle()
+                                print("button")
+                            } else {
+                                isChangeLockAlert.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "circle.fill")
+                                .foregroundColor(.customColorGreen)
+                                .font(.system(size: 70))
+                        }
+                        .padding()
+                        .alert("確認", isPresented: $isCircleAlert) {
+                            Button {} label: {Text("キャンセル")}
+                            Button {
+                                print("alert")
+                                isChangeLock = true
+                                if isChangeLock {
+                                    isSelectCircle = true
+                                    isSelectRectangle = false
+//                                    isChangeLock = false
+                                }
+                            } label: {
+                                Text("選択する")
+                            }
+                        } message: {
+                            Text("この図形を選択しますか？\n変更できなくなります")
+                        }
+                        .alert("注意", isPresented: $isChangeLockAlert) {
+                            Button {} label: {Text("OK")}
+                        } message: {
+                            Text("図形を変更できません")
+                        }
+                        .background(isSelectCircle ? Color.customColorYellow.opacity(0.6) : Color.customColorGray)
                     }
-                    externalDisplayContent.offsetShapes()
-                    externalDisplayContent.tapCount += 1
                 }
-            } label: {
-                Text("circleを追加")
+                .padding()
+                Spacer()
+                    .frame(height: 100)
+                Button {
+                    if !( externalDisplayContent.screenHeight < externalDisplayContent.shapeTotalHeight) {
+                        externalDisplayContent.shapes.append(shape)
+                        externalDisplayContent.shapeTotalWidth += AppConst.NumericalValue.width
+                        if externalDisplayContent.tapCount == 0 {
+                            externalDisplayContent.x = AppConst.NumericalValue.resetValue
+                        } else {
+                            externalDisplayContent.x += AppConst.NumericalValue.width
+                        }
+                        externalDisplayContent.offsetShapes()
+                        externalDisplayContent.tapCount += 1
+                    }
+                } label: {
+                    Text("ボタンをタップ！")
+                        .foregroundColor(.white)
+                        .bold()
+                }
+                .padding()
+                .background(Color.customColorGreen)
+                .cornerRadius(40)
             }
-            
-            Button {
-                shape = "rectangle"
-                externalDisplayContent.shapes.append(shape)
-            } label: {
-                Text("rectangleを追加")
-            }
-            Spacer()
         }
     } // body
 } // view
@@ -72,8 +159,8 @@ struct AddRectangleView: View {
 
 
 // MARK: - Preview
-struct ContentView_Previews: PreviewProvider {
+struct AddShapesView_Previews: PreviewProvider {
     static var previews: some View {
-        AddRectangleView()
+        AddShapesView()
     }
 }
