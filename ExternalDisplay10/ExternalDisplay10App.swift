@@ -38,7 +38,7 @@ struct ExternalDisplay10App: App {
     
     var body: some Scene {
         WindowGroup {
-            AddRectangleView()
+            AddShapesView()
                 .environmentObject(externalDisplayContent)
                 .onReceive(sceneWillConnectorPublisher, perform: sceneWillConnect)
                 .onReceive(sceneDidDisconnectorPublisher, perform: sceneDidDisConnect)
