@@ -14,4 +14,7 @@ enum AppConst {
         static let resetValue = CGFloat(0)
         static let resetTapCount = 0
     }
+    enum Text {
+        static let selectShapes = "図形を選択してください"
+    }
 }
