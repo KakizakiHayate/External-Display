@@ -19,26 +19,39 @@ struct ExternalView: View {
     @EnvironmentObject var externalDisplayContent: ExternalDisplayContent
     // MARK: - body
     var body: some View {
-        GeometryReader { proxy in
-                ForEach(externalDisplayContent.shapes, id: \.self) { shape in
-                    if proxy.size.width > externalDisplayContent.shapeTotalWidth {
-                        if shape == "circle" {
-                            Circle()
-                                .frame(width: AppConst.NumericalValue.width, height: AppConst.NumericalValue.height)
-                                .offset(x: externalDisplayContent.x, y: externalDisplayContent.y)
-                        } else if shape == "rectangle" {
-                            Rectangle()
-                                .frame(width: 100, height: 100)
+        ZStack {
+            Color.customColorGray
+                .ignoresSafeArea(.all)
+            GeometryReader { proxy in
+                    ForEach(externalDisplayContent.shapes, id: \.self) { shape in
+                        if proxy.size.width > externalDisplayContent.shapeTotalWidth {
+                            if shape == "circle" {
+                                Circle()
+                                    .frame(width: AppConst.NumericalValue.width, height: AppConst.NumericalValue.height)
+                                    .foregroundColor(Color.customColorGreen)
+                                    .offset(x: externalDisplayContent.x, y: externalDisplayContent.y)
+                            } else if shape == "rectangle" {
+                                a()
+                                Rectangle()
+                                    .frame(width: AppConst.NumericalValue.width, height: AppConst.NumericalValue.height)
+                                    .cornerRadius(10)
+                                    .foregroundColor(Color.customColorGreen)
+                                    .offset(x: externalDisplayContent.x, y: externalDisplayContent.y)
+                            }
                         }
                     }
-                }
-                .onAppear {
-                    print("画面サイズ格納\(proxy.size.width)")
-                    externalDisplayContent.screenWidth = proxy.size.width
-                    externalDisplayContent.screenHeight = proxy.size.height
-                }
+                    .onAppear {
+                        print("画面サイズ格納\(proxy.size.width)")
+                        externalDisplayContent.screenWidth = proxy.size.width
+                        externalDisplayContent.screenHeight = proxy.size.height
+                    }
+            }
         }
     } // body
+    func a() -> some View {
+        print("rectangle")
+        return Text("")
+    }
 } // view
 
 // MARK: - Preview
